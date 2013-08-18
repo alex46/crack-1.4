@@ -1,0 +1,45 @@
+
+import java.util.HashMap;
+
+
+
+
+public class removeDuplicate {
+public static boolean anagram(String s, String t){
+    if(s==null || t == null) return false;
+    if(s.length()==0 || t.length()==0) return false;
+    
+    HashMap<Character,Integer> a = new HashMap<Character,Integer>();
+    HashMap<Character,Integer> b = new HashMap<Character,Integer>();
+    
+    for(int i = 0; i < s.length();i++){
+        if(!a.containsKey(s.charAt(i))) {
+            a.put(s.charAt(i),1);
+            
+        }
+        else a.put(new Character(s.charAt(i)), new Integer(a.get(s.charAt(i)))+1);
+        
+    }
+    
+      for(int i = 0; i < t.length();i++){
+        if(!b.containsKey(t.charAt(i))) b.put(t.charAt(i),1);
+        else b.put(new Character(t.charAt(i)),new Integer(b.get(t.charAt(i)))+1);
+    }
+     
+     for(int i = 0; i < s.length();i++){
+       System.out.println(a.get(s.charAt(i)));
+       System.out.println(b.get(s.charAt(i)));
+        if(!a.get(s.charAt(i)).equals(b.get(s.charAt(i)))) return false;
+     }
+    return true;  
+    
+    }
+
+public static void main(String[] args){
+       if(anagram("abcc","accc")) System.out.println("right");
+    
+    
+      
+    }
+
+}
